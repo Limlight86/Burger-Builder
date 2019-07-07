@@ -1,17 +1,13 @@
-import React from 'react';
-import styles from "./Layout.module.css"
+import React from "react";
+import styles from "./Layout.module.css";
 
-const layout = (props) => {
-  return(
+const layout = props => {
+  return (
     <React.Fragment>
-      <div>
-        Toolbar, SideDrawer, Backdrop
-      </div>
-      <main className={styles.content}>
-        {props.children}
-      </main>
+      <div>Toolbar, SideDrawer, Backdrop</div>
+      <main className={styles.content}>{props.children}</main>
     </React.Fragment>
   );
 };
 
-export default layout
+export default layout;
