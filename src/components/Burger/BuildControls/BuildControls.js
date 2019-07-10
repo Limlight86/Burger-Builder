@@ -13,7 +13,7 @@ const buildControls = props => {
   return (
     <div className={styles.BuildControls}>
       <p>
-        <strong>Current Price: {props.price}</strong>
+        <strong>Current Price: ${props.price}</strong>
       </p>
       {controls.map(ctrl => {
         return (
