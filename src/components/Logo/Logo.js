@@ -2,6 +2,7 @@ import React from "react";
 import BurgerLogo from "../../assets/Images/burger-logo.png";
 import styles from "./Logo.module.css";
 
+//implicit return / destructure props
 const logo = props => {
   return (
     <div className={styles.Logo} style={{height: props.height}} onClick={props.clicked}>

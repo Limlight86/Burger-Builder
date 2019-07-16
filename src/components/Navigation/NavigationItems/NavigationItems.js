@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './NavigationItems.module.css'
 import NavigationItem from './NavigationItem/NavigationItem'
 
+//implicit return
 const navigationItems = () => {
   return(
     <ul className={styles.NavigationItems}>

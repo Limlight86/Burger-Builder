@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./BuildControl.module.css";
-
+/*
+ Same comments as buildControls. Implicit returns and destructuring of props
+*/
 const buildControl = props => {
   return (
     <div className={styles.BuildControl}>

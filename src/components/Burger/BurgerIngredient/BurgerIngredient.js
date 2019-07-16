@@ -2,6 +2,25 @@ import React, { Component } from "react";
 import styles from "./BurgerIngredient.module.css";
 import PropTypes from "prop-types";
 
+/*
+ A cleaner proposal
+ const BurgerIngredient = ({ type }) => {
+   const Ingredient = {
+    "bread-bottom": () => <div className={styles.BreadBottom} />,
+    "bread-top": () => (
+      <div className={styles.BreadTop}>
+        <div className={styles.Seeds1} />
+        <div className={styles.Seeds2} />
+      </div>
+    ),
+    "meat": () => <div className={styles.Meat} />,
+    "cheese": () =>  <div className={styles.Cheese} />,
+    "salad": () => <div className={styles.Salad} />,
+    "bacon": () => <div className={styles.Bacon} />
+   }[type]
+   return <Ingredient />
+ }
+*/
 class BurgerIngredient extends Component {
   render() {
     let ingredient = null;

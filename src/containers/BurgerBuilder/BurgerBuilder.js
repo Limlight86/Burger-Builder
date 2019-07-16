@@ -25,6 +25,9 @@ class BurgerBuilder extends Component {
   };
 
   updatePurchaseState(ingredients) {
+    /* these can be combined into one loop, and you can make use of implicit returns
+    const sum = Object.keys(ingredients).reduce((acc, key) => acc + ingredients[key], 0)
+    */
     const sum = Object.keys(ingredients)
       .map(igKey => {
         return ingredients[igKey];
@@ -34,7 +37,22 @@ class BurgerBuilder extends Component {
       }, 0);
     this.setState({ purchaseable: sum > 0 });
   }
-
+  /* 
+  this function and the remove ingredient function are exactly identical except for a plus and minus sign. You could prolly refactor to something like 
+    updateIngredientHandler = (type, modifier) => {
+      const oldCount = this.state.ingredients[type];
+      const updatedCount = oldCount + (1 * modifier);
+      const updatedIngredients = {
+        ...this.state.ingredients
+      };
+      updatedIngredients[type] = updatedCount;
+      const priceModifier = INGREDIENT_PRICES[type] * modifier;
+      const oldPrice = this.state.totalPrice;
+      const newPrice = oldPrice + priceModifier;
+      this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
+      this.updatePurchaseState(updatedIngredients);
+    };
+  */
   addIngredientHanlder = type => {
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
@@ -65,7 +83,9 @@ class BurgerBuilder extends Component {
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
   };
-
+  /* implicit returns for these next three functions 
+    ex: const purchaseHandler = () => this.setState({ purchasing: true })
+  */
   purchaseHandler = () => {
     this.setState({ purchasing: true });
   };
@@ -79,6 +99,20 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    /*
+    There's alot of places where you're calling `this.state` to access different state properties
+    They should be destructured here so you can just call them by their property name 
+    const { purchasing, ingredients, totalPrice, purchaseable } = this.state 
+    Also, its generally not best practice to mutate state properties, I'd prolly do something like this 
+
+    const disabledInfo = Object.keys(ingredients).reduce((acc, key) => {
+      acc[key] = ingredients[key] <= 0
+      return acc
+    }, {})
+
+    Last thing, if you're destructuring Component when you import it from React, you should also destructure Fragment 
+    import React, { Component, Fragment } from 'react'
+    */    
     const disabledInfo = {
       ...this.state.ingredients
     };

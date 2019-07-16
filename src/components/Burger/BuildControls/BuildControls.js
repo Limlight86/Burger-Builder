@@ -8,7 +8,27 @@ const controls = [
   { label: "Cheese", type: "cheese" },
   { label: "Meat", type: "meat" }
 ];
-
+/*
+implicit return for this component and the map within it
+ props should be destructured in the function param
+ ex: const buildControls = ({ price, ingredientAdded, ingredientRemoved, disabled, purchaseable, ordered }) => (
+   //COMPONENT STUFF
+ )
+ The map parameter `ctrl` can also be destructured
+ This is also where you'd change the ingredient add/remove to use the modifier argument that I mentioned in the container 
+ see example below
+    {controls.map(({ label, type }) => {
+    return (
+      <BuildControl
+        key={label}
+        label={label}
+        added={() => ingredientUpdated(type, 1)}
+        removed={() => ingredientUpdated(type, -1)}
+        disabled={disabled[type]}
+      />
+    );
+  })}
+*/
 const buildControls = props => {
   return (
     <div className={styles.BuildControls}>

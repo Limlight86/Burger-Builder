@@ -4,6 +4,7 @@ import Logo from "../../Logo/Logo";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 
+// implicit return / destructure props
 const toolbar = props => {
   return (
     <header className={styles.Toolbar}>
